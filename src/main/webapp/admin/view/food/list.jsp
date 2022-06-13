@@ -111,11 +111,56 @@
                                             <span>
                                                 <a href="${pageContext.request.contextPath}/admin/food/update?id=<%=foods.get(i).getId()%>" class="mr-4" data-toggle="tooltip"
                                                    data-placement="top" title="Edit"><i
-                                                        class="fa fa-pencil color-muted"></i> </a><a
-                                                    href="${pageContext.request.contextPath}/admin/food/delete?id=<%=foods.get(i).getId()%>" data-toggle="tooltip"
-                                                    data-placement="top" title="Close"><i
-                                                    class="fa fa-close color-danger"></i></a></span>
+                                                        class="fa fa-pencil color-muted"></i> </a>
+                                                <a data-toggle="modal"
+                                                   data-target="#exampleModal<%=foods.get(i).getId()%>" href="#" data-placement="top" title="Close"></a></span>
+                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#add-category<%=foods.get(i).getId()%>" class="mr-4">
+                                                <i class="fa fa-close color-danger"></i>
+                                            </a>
                                         </td>
+                                        <div class="modal fade" id="exampleModal<%=foods.get(i).getId()%>"
+                                             tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            Confirmation</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure to delete food - <%=foods.get(i).getNameFood()%>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger btn-pill"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                        <a href="${pageContext.request.contextPath}/admin/food/delete?id=<%=foods.get(i).getId()%>"
+                                                           class="btn btn-primary btn-pill">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade none-border" id="add-category<%=foods.get(i).getId()%>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title"><strong>Confirmation</strong></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure to delete food - <%=foods.get(i).getNameFood()%>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                                        <a href="${pageContext.request.contextPath}/admin/food/delete?id=<%=foods.get(i).getId()%>"
+                                                           class="btn btn-danger waves-effect waves-light save-category">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                     <%}%>
                                     </tbody>
